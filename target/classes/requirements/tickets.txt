@@ -4,7 +4,7 @@ DONE - BMS-14: Create database diagram.
 
 DONE - BMS-15: Add hibernate configuration(pom and utils).
 
-BMS-16: Add Hibernate model.
+DONE - BMS-16: Add Hibernate model.
 
 BMS-17: Add generic repositories.
 
