@@ -34,11 +34,13 @@ public class Main {
                 case SHOW_ALL_AUTHORS:
                     authorController.showAllAuthors();
                     break;
+                case UPDATE_AUTHOR:
+                    authorController.updateAuthor();
                 case EXIT:
                     System.out.println("Goodbye!");
                     break;
                 case UNKNOWN:
-                    System.out.printf("Option unknown!");
+                    System.out.println("Option unknown!");
                     break;
                 default:
                     System.out.println("User option " + userOption + " is not implemented!");

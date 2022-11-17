@@ -1,6 +1,7 @@
 package com.sda.sergiu.bookmanagement.controller;
 
 import com.sda.sergiu.bookmanagement.service.AuthorService;
+import com.sda.sergiu.bookmanagement.service.eception.EntityNotFoundException;
 import com.sda.sergiu.bookmanagement.service.eception.InvalidParameterException;
 
 import javax.sound.midi.Soundbank;
@@ -29,9 +30,28 @@ public class AuthorController {
 
     }
 
+    public void updateAuthor() {
+        try {
+            System.out.println("Please insert an author id!");
+            int authorId = Integer.parseInt(scanner.nextLine());
+            System.out.println("Please insert author first name: ");
+            String firstName = scanner.nextLine();
+            System.out.println("Please insert author last name: ");
+            String lastName = scanner.nextLine();
+            authorService.updateAuthor(authorId, firstName, lastName);
+            System.out.println("Author was updated!");
+        } catch (NumberFormatException e) {
+            System.out.println("Provided author id is not a number!");
+        } catch (EntityNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Internal server error");
+        }
+    }
+
     public void showAllAuthors() {
         authorService.getAllAuthors().stream().forEach(author ->
-                System.out.println("Author with id: " + author.getId() + " lastname: " + author.getLastname() + " firstname: " + author.getLastname())
+                System.out.println("Author with id: " + author.getId() + " lastname: " + author.getLastname() + " firstname: " + author.getFirstname())
         );
     }
 
