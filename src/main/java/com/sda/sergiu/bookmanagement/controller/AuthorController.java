@@ -23,10 +23,16 @@ public class AuthorController {
             authorService.createAuthor(firstName, lastName);
         } catch (InvalidParameterException e) {
             System.out.println(e.getMessage());
-        } catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println("Internal server error!!!");
         }
 
+    }
+
+    public void showAllAuthors() {
+        authorService.getAllAuthors().stream().forEach(author ->
+                System.out.println("Author with id: " + author.getId() + " lastname: " + author.getLastname() + " firstname: " + author.getLastname())
+        );
     }
 
 }
