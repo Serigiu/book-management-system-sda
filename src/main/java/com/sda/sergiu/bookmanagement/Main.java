@@ -1,9 +1,12 @@
 package com.sda.sergiu.bookmanagement;
 
 import com.sda.sergiu.bookmanagement.controller.AuthorController;
+import com.sda.sergiu.bookmanagement.controller.BookController;
 import com.sda.sergiu.bookmanagement.menu.UserOption;
 import com.sda.sergiu.bookmanagement.repository.AuthorRepositoryImpl;
+import com.sda.sergiu.bookmanagement.repository.BookRepositoryImpl;
 import com.sda.sergiu.bookmanagement.service.AuthorServiceImpl;
+import com.sda.sergiu.bookmanagement.service.BookServiceImpl;
 import com.sda.sergiu.bookmanagement.utils.SessionManager;
 
 import java.util.Scanner;
@@ -13,6 +16,8 @@ public class Main {
         SessionManager.getSessionFactory();
 
         AuthorController authorController = new AuthorController(new AuthorServiceImpl(new AuthorRepositoryImpl()));
+
+        BookController bookController = new BookController(new BookServiceImpl(new BookRepositoryImpl(), new AuthorRepositoryImpl()));
 
         Scanner scanner = new Scanner(System.in);
 
@@ -39,6 +44,9 @@ public class Main {
                     break;
                 case DELETE_AUTHOR:
                     authorController.deleteAuthor();
+                    break;
+                case CREATE_BOOK:
+                    bookController.createBook();
                     break;
                 case EXIT:
                     System.out.println("Goodbye!");

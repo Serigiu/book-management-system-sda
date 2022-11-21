@@ -2,8 +2,8 @@ package com.sda.sergiu.bookmanagement.service;
 
 import com.sda.sergiu.bookmanagement.model.Author;
 import com.sda.sergiu.bookmanagement.repository.AuthorRepository;
-import com.sda.sergiu.bookmanagement.service.eception.EntityNotFoundException;
-import com.sda.sergiu.bookmanagement.service.eception.InvalidParameterException;
+import com.sda.sergiu.bookmanagement.service.exception.EntityNotFoundException;
+import com.sda.sergiu.bookmanagement.service.exception.InvalidParameterException;
 
 import java.util.List;
 import java.util.Optional;

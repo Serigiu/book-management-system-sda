@@ -22,12 +22,12 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private List<Review> reviews;
 
-    private Book(String title, String description) {
+    public Book(String title, String description) {
         this.title = title;
         this.description = description;
     }
 
-    private Book() {
+    public Book() {
 
     }
 

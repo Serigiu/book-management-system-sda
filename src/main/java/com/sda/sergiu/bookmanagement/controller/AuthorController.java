@@ -1,10 +1,9 @@
 package com.sda.sergiu.bookmanagement.controller;
 
 import com.sda.sergiu.bookmanagement.service.AuthorService;
-import com.sda.sergiu.bookmanagement.service.eception.EntityNotFoundException;
-import com.sda.sergiu.bookmanagement.service.eception.InvalidParameterException;
+import com.sda.sergiu.bookmanagement.service.exception.EntityNotFoundException;
+import com.sda.sergiu.bookmanagement.service.exception.InvalidParameterException;
 
-import javax.sound.midi.Soundbank;
 import java.util.Scanner;
 
 public class AuthorController {
