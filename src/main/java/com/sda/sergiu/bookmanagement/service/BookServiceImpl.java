@@ -7,6 +7,7 @@ import com.sda.sergiu.bookmanagement.repository.BookRepository;
 import com.sda.sergiu.bookmanagement.service.exception.EntityNotFoundException;
 import com.sda.sergiu.bookmanagement.service.exception.InvalidParameterException;
 
+import java.util.List;
 import java.util.Optional;
 
 public class BookServiceImpl implements BookService {
@@ -30,13 +31,17 @@ public class BookServiceImpl implements BookService {
             throw new InvalidParameterException("Provided value for author id:" + authorId + " is invalid");
         }
         Optional<Author> authorOptional = authorRepository.findById(authorId);
-        if (authorOptional.isEmpty()){
+        if (authorOptional.isEmpty()) {
             throw new EntityNotFoundException("Author with provided id " + authorId + " was not found!");
         }
         Author author = authorOptional.get();
         Book book = new Book(title, description);
         book.setAuthor(author);
         bookRepository.create(book);
+    }
 
+    @Override
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
     }
 }
