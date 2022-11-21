@@ -2,10 +2,13 @@ package com.sda.sergiu.bookmanagement;
 
 import com.sda.sergiu.bookmanagement.controller.AuthorController;
 import com.sda.sergiu.bookmanagement.controller.BookController;
+import com.sda.sergiu.bookmanagement.controller.ReviewController;
 import com.sda.sergiu.bookmanagement.menu.UserOption;
 import com.sda.sergiu.bookmanagement.repository.AuthorRepositoryImpl;
 import com.sda.sergiu.bookmanagement.repository.BookRepositoryImpl;
+import com.sda.sergiu.bookmanagement.repository.BookReviewRepositoryImpl;
 import com.sda.sergiu.bookmanagement.service.AuthorServiceImpl;
+import com.sda.sergiu.bookmanagement.service.BookReviewServiceImpl;
 import com.sda.sergiu.bookmanagement.service.BookServiceImpl;
 import com.sda.sergiu.bookmanagement.utils.SessionManager;
 
@@ -18,6 +21,8 @@ public class Main {
         AuthorController authorController = new AuthorController(new AuthorServiceImpl(new AuthorRepositoryImpl()));
 
         BookController bookController = new BookController(new BookServiceImpl(new BookRepositoryImpl(), new AuthorRepositoryImpl()));
+
+        ReviewController reviewController = new ReviewController(new BookReviewServiceImpl(new BookReviewRepositoryImpl(), new BookRepositoryImpl()));
 
         Scanner scanner = new Scanner(System.in);
 
@@ -50,6 +55,9 @@ public class Main {
                     break;
                 case SHOW_ALL_BOOKS:
                     bookController.showAllBooks();
+                    break;
+                case CREATE_REVIEW:
+                    reviewController.createReview();
                     break;
                 case EXIT:
                     System.out.println("Goodbye!");
