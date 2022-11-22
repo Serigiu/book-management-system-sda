@@ -59,6 +59,9 @@ public class Main {
                 case UPDATE_BOOK:
                     bookController.updateBook();
                     break;
+                case DELETE_BOOK:
+                    bookController.deleteBook();
+                    break;
                 case CREATE_REVIEW:
                     reviewController.createReview();
                     break;

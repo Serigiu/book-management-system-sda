@@ -29,13 +29,13 @@ In case the author id doesn't exist in the system, an error message should be di
 DONE! - BMS-6: As a user I should be able to view all the books. Existing books should be listed on the screen.
 Each line should shoe the book is, title, description, author full name.
 
-HOMEWORK!!! BMS-7: As a user I should be able to update an existing book by providing the is of the book, and new values for
+HOMEWORK!!!??? BMS-7: As a user I should be able to update an existing book by providing the is of the book, and new values for
 title, description and author id.The system should validate the book title and description to not be empty or blank.
 In case the author id doesn't exit in the system, an error message should be displayed.
 
 HOMEWORK!!! BMS-8: AS a user I should be able to delete an exiting book by providing the id of the book.
 
-DONE!??? - BMS-9: As a user I should be able to provide a new review of the book by providing the book title, score and comment.
+DONE! - BMS-9: As a user I should be able to provide a new review of the book by providing the book title, score and comment.
 The system should validate the score to be between 1 and 5. The system should validate the comment to not be empty
 or blank. In case the book title doesn't exist in the system, an error message should be displayed.
 
