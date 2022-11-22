@@ -4,6 +4,7 @@ import com.sda.sergiu.bookmanagement.service.AuthorService;
 import com.sda.sergiu.bookmanagement.service.exception.EntityNotFoundException;
 import com.sda.sergiu.bookmanagement.service.exception.InvalidParameterException;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class AuthorController {
@@ -62,6 +63,16 @@ public class AuthorController {
             System.out.println(e.getMessage());
         } catch (Exception e) {
             System.out.println("Internal server error");
+        }
+    }
+
+    public void importAuthors() {
+        try {
+            System.out.println("Authors import started!");
+            authorService.importAuthors();
+            System.out.println("Authors import is finished.");
+        } catch (IOException e) {
+            System.out.println("Internal server error. Import failed!");
         }
     }
 
