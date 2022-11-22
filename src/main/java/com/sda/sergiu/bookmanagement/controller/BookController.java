@@ -31,11 +31,32 @@ public class BookController {
             System.out.println("Please insert a valid numeric value for author id!");
         } catch (InvalidParameterException e) {
             System.out.println(e.getMessage());
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Internal server error!");
         }
 
     }
+
+    public void updateBook() {
+        try {
+            System.out.println("Please insert a book id!");
+            int bookId = Integer.parseInt((scanner.nextLine()));
+            System.out.println("Please insert a new book title!");
+            String title = scanner.nextLine();
+            System.out.println("Please insert a new book description");
+            String description = scanner.nextLine();
+            System.out.println("Please insert an author id!");
+            int authorId = Integer.parseInt(scanner.nextLine());
+            bookService.updateBook(bookId, title, description, authorId);
+        } catch (NumberFormatException e) {
+            System.out.println("Provided id is not a number!");
+        } catch (EntityNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Internal server error");
+        }
+    }
+
     public void showAllBooks() {
         bookService.getAllBooks().stream().forEach(book ->
                 System.out.println(

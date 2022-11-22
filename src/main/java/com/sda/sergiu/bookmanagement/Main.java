@@ -56,6 +56,9 @@ public class Main {
                 case SHOW_ALL_BOOKS:
                     bookController.showAllBooks();
                     break;
+                case UPDATE_BOOK:
+                    bookController.updateBook();
+                    break;
                 case CREATE_REVIEW:
                     reviewController.createReview();
                     break;

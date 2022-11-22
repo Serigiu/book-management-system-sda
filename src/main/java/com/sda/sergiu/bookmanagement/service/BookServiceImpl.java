@@ -41,6 +41,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public void updateBook(int bookId, String title, String description, int authorId) throws InvalidParameterException, EntityNotFoundException {
+
+    }
+
+    @Override
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
