@@ -11,9 +11,8 @@ public enum UserOption {
     UPDATE_BOOK(7, "Update book"),
     DELETE_BOOK(8, "Delete book!"),
     CREATE_REVIEW(9, "Create a book review"),
-
     IMPORT_AUTHORS(10, "Import csv file with authors"),
-
+    IMPORT_BOOKS(11, "Import csv file with books"),
     EXIT(99, "Exit"),
     UNKNOWN(100, "Unknown option");
 

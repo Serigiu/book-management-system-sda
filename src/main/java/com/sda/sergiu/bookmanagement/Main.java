@@ -68,6 +68,9 @@ public class Main {
                 case IMPORT_AUTHORS:
                     authorController.importAuthors();
                     break;
+                case IMPORT_BOOKS:
+                    bookController.importBooks();
+                    break;
                 case EXIT:
                     System.out.println("Goodbye!");
                     break;

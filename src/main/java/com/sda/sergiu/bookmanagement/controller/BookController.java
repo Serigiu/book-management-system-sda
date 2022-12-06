@@ -4,6 +4,7 @@ import com.sda.sergiu.bookmanagement.service.BookService;
 import com.sda.sergiu.bookmanagement.service.exception.EntityNotFoundException;
 import com.sda.sergiu.bookmanagement.service.exception.InvalidParameterException;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class BookController {
@@ -57,7 +58,7 @@ public class BookController {
         }
     }
 
-    public void deleteBook(){
+    public void deleteBook() {
         try {
             System.out.println("Please insert book id!");
             int bookId = Integer.parseInt(scanner.nextLine());
@@ -71,6 +72,16 @@ public class BookController {
             System.out.println(e.getMessage());
         } catch (Exception e) {
             System.out.println("Internal server error");
+        }
+    }
+
+    public void importBooks() {
+        try {
+            System.out.println("Books imported started!");
+            bookService.importBooks();
+            System.out.println("Books import is finished.");
+        } catch (IOException e) {
+            System.out.println("Internal server error. Import failed!");
         }
     }
 

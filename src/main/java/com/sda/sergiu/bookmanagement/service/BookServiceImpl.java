@@ -7,6 +7,10 @@ import com.sda.sergiu.bookmanagement.repository.BookRepository;
 import com.sda.sergiu.bookmanagement.service.exception.EntityNotFoundException;
 import com.sda.sergiu.bookmanagement.service.exception.InvalidParameterException;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -74,17 +78,38 @@ public class BookServiceImpl implements BookService {
         book.setAuthor(author);
         bookRepository.update(book);
     }
+
     @Override
     public void deleteBook(int bookId) throws InvalidParameterException, EntityNotFoundException {
-            if (bookId < 1) {
-                throw new InvalidParameterException("Provided value for Book id: " + bookId + " is invalid!");
-            }
-            Optional<Book> bookOptional = bookRepository.findById(bookId);
-            if (bookOptional.isEmpty()) {
-                throw new EntityNotFoundException("Book with id: " + bookId + " was not found!");
-            }
-            Book book = bookOptional.get();
-            bookRepository.delete(book);
+        if (bookId < 1) {
+            throw new InvalidParameterException("Provided value for Book id: " + bookId + " is invalid!");
         }
+        Optional<Book> bookOptional = bookRepository.findById(bookId);
+        if (bookOptional.isEmpty()) {
+            throw new EntityNotFoundException("Book with id: " + bookId + " was not found!");
+        }
+        Book book = bookOptional.get();
+        bookRepository.delete(book);
+    }
+    @Override
+    public void importBooks() throws IOException {
+        Path filepath = Paths.get("C:\\Users\\User\\Documents\\book-management-system-sda\\src\\main\\resources\\Data\\Books.csv");
+        Files.lines(filepath)
+                .skip(1)
+                .filter(line -> line != null)
+                .filter(line -> !line.isBlank())
+                .map(line -> line.split("\\|"))
+                .forEach(bookProperties -> {
+                    try {
+                        String description = bookProperties[1];
+                        String title = bookProperties[2];
+                        int authorId = Integer.parseInt(bookProperties[3]);
+                        createBook(title,description, authorId);
+                    } catch (Exception e) {
+                        System.err.println(e.getMessage());
+                    }
+                });
 
     }
+
+}
